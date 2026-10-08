@@ -19,8 +19,8 @@ My open-source work includes material models, verification examples, and solver 
 
 ### Open-source work
 
-- **[SPHinXsys](https://github.com/Xiangyu-Hu/SPHinXsys/pull/1118)** — HJC concrete material and a Taylor-bar impact example.
-- **[JAX-FEM](https://github.com/deepmodeling/jax-fem/pull/96)** — Newton iteration limits and nonconvergence reporting.
-- **[PySPH](https://github.com/pypr/pysph/pull/440)** and **[Peridigm](https://github.com/peridigm/peridigm/pull/407)** — proposed HJC material implementations and verification work.
+- **[OpenRadioss (OpenCourant)](https://github.com/OpenCourant/OpenCourant)**
+- **[SPHinXsys](https://github.com/Xiangyu-Hu/SPHinXsys)**
+- **[JAX-FEM](https://github.com/deepmodeling/jax-fem)**, **[PySPH](https://github.com/pypr/pysph)**, and **[Peridigm](https://github.com/peridigm/peridigm)**
 
 I'm interested in discussing constitutive models, impact simulation, and open-source scientific software. Feel free to reach out at [yuzheng@mail.ustc.edu.cn](mailto:yuzheng@mail.ustc.edu.cn).
