@@ -2,7 +2,7 @@
 
 I work on **computational mechanics**, with a focus on **impact dynamics, constitutive modeling, and material failure**. I'm also exploring **differentiable simulation** for material characterization and inverse problems.
 
-My open-source work includes material models, verification examples, and solver fixes across finite element, particle, and peridynamic methods.
+I contribute to open-source scientific software for computational mechanics.
 
 <div align="center">
   <picture>
@@ -19,8 +19,8 @@ My open-source work includes material models, verification examples, and solver 
 
 ### Open-source work
 
-- **[OpenRadioss (OpenCourant)](https://github.com/OpenCourant/OpenCourant)** — PR [#2](https://github.com/OpenCourant/OpenCourant/pull/2)
-- **[SPHinXsys](https://github.com/Xiangyu-Hu/SPHinXsys)** — PR [#1118](https://github.com/Xiangyu-Hu/SPHinXsys/pull/1118)
-- **[JAX-FEM](https://github.com/deepmodeling/jax-fem)** — PRs [#96](https://github.com/deepmodeling/jax-fem/pull/96), [#97](https://github.com/deepmodeling/jax-fem/pull/97), [#98](https://github.com/deepmodeling/jax-fem/pull/98); **[PySPH](https://github.com/pypr/pysph)** — PRs [#439](https://github.com/pypr/pysph/pull/439), [#440](https://github.com/pypr/pysph/pull/440); **[Peridigm](https://github.com/peridigm/peridigm)** — PR [#407](https://github.com/peridigm/peridigm/pull/407)
+- **[OpenRadioss (OpenCourant)](https://github.com/OpenCourant/OpenCourant)** — [Contributions](https://github.com/OpenCourant/OpenCourant/commits/main/?author=lililii124)
+- **[SPHinXsys](https://github.com/Xiangyu-Hu/SPHinXsys)** — [Contributions](https://github.com/Xiangyu-Hu/SPHinXsys/commits/master/?author=lililii124)
+- **[JAX-FEM](https://github.com/deepmodeling/jax-fem)** — [Contributions](https://github.com/deepmodeling/jax-fem/commits/main/?author=lililii124)
 
 I'm interested in discussing constitutive models, impact simulation, and open-source scientific software. Feel free to reach out at [yuzheng@mail.ustc.edu.cn](mailto:yuzheng@mail.ustc.edu.cn).
