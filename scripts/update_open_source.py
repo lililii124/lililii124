@@ -1,4 +1,4 @@
-"""Refresh the public upstream PR table in a GitHub profile README."""
+"""Refresh public upstream PRs and preserved contributions in a profile README."""
 
 import argparse
 from datetime import datetime, timedelta, timezone
@@ -13,11 +13,24 @@ from urllib.parse import quote, urlparse
 START = '<!-- OPEN-SOURCE-WORK:START -->'
 END = '<!-- OPEN-SOURCE-WORK:END -->'
 PROJECT_NAMES = {
+    'OpenCourant/OpenCourant': 'OpenRadioss (OpenCourant)',
     'deepmodeling/jax-fem': 'JAX-FEM',
     'sofa-framework/sofa': 'SOFA',
     'pypr/pysph': 'PySPH',
     'peridigm/peridigm': 'Peridigm',
 }
+PRESERVED_PROJECTS = ('OpenCourant/OpenCourant',)
+
+
+def github_get(endpoint, gh='gh', **parameters):
+    command = [gh, 'api', '--method', 'GET', endpoint,
+               '-H', 'Accept: application/vnd.github+json',
+               '-H', 'X-GitHub-Api-Version: 2022-11-28']
+    for name, value in parameters.items():
+        command += ['-f', f'{name}={value}']
+    result = subprocess.run(command, check=True, capture_output=True, text=True,
+                            encoding='utf-8', timeout=60)
+    return json.loads(result.stdout)
 
 
 def fetch_pull_requests(login, gh='gh'):
@@ -27,14 +40,8 @@ def fetch_pull_requests(login, gh='gh'):
     items = {}
     expected = None
     for page in range(1, 11):
-        result = subprocess.run(
-            [gh, 'api', '--method', 'GET', 'search/issues',
-             '-H', 'Accept: application/vnd.github+json',
-             '-H', 'X-GitHub-Api-Version: 2022-11-28',
-             '-f', f'q={query}', '-f', 'sort=created', '-f', 'order=asc',
-             '-f', 'per_page=100', '-f', f'page={page}'],
-            check=True, capture_output=True, text=True, encoding='utf-8', timeout=60)
-        data = json.loads(result.stdout)
+        data = github_get('search/issues', gh, q=query, sort='created',
+                          order='asc', per_page=100, page=page)
         if data.get('incomplete_results') is not False:
             raise RuntimeError('GitHub returned incomplete search results; README left unchanged')
         count = data['total_count']
@@ -56,6 +63,34 @@ def fetch_pull_requests(login, gh='gh'):
     raise RuntimeError('Missing search results; README left unchanged')
 
 
+def fetch_preserved_contributions(login, gh='gh'):
+    preserved = {}
+    for repository in PRESERVED_PROJECTS:
+        metadata = github_get(f'repos/{repository}', gh)
+        if metadata.get('private') is not False or metadata['full_name'] != repository:
+            raise ValueError('Preserved project is no longer at its public repository URL')
+        # The default branch contains inherited history even when the original
+        # repository's pull request objects are no longer searchable.
+        commits = github_get(f'repos/{repository}/commits', gh, author=login, per_page=1)
+        if not commits:
+            raise RuntimeError('Preserved contribution could not be found; README left unchanged')
+        commit = commits[0]
+        if not re.fullmatch(r'[0-9a-f]{40}', commit['sha']):
+            raise ValueError('Unexpected commit identifier')
+        if (commit.get('author') or {}).get('login', '').casefold() != login.casefold():
+            raise ValueError('Preserved commit belongs to a different author')
+        url = f'https://github.com/{repository}/commit/{commit["sha"]}'
+        if commit['html_url'] != url:
+            raise ValueError('Unexpected commit URL')
+        branch = quote(metadata['default_branch'], safe='')
+        preserved[repository] = {
+            'history_url': f'https://github.com/{repository}/commits/{branch}/?author={quote(login, safe="")}',
+            'latest': {'kind': 'commit', 'title': commit['commit']['message'].splitlines()[0],
+                       'html_url': url, 'updated_at': commit['commit']['committer']['date']},
+        }
+    return preserved
+
+
 def markdown_text(value, limit=None):
     text = ' '.join(value.split())
     if limit and len(text) > limit:
@@ -71,7 +106,7 @@ def pr_search(repository, login, state):
     return f'https://github.com/{repository}/pulls?q={query}'
 
 
-def render_table(items, login, checked_on):
+def render_table(items, login, checked_on, preserved=None):
     projects = {}
     for item in items:
         if item['user']['login'].casefold() != login.casefold():
@@ -87,6 +122,8 @@ def render_table(items, login, checked_on):
         expected_url = f'https://github.com/{repository}/pull/{item["number"]}'
         if item['html_url'] != expected_url:
             raise ValueError('Unexpected PR URL')
+        repository = next((name for name in PRESERVED_PROJECTS
+                           if name.casefold() == repository.casefold()), repository)
         pull_request = item['pull_request']
         if 'merged_at' not in pull_request:
             raise ValueError('Missing merge status; README left unchanged')
@@ -100,26 +137,40 @@ def render_table(items, login, checked_on):
         if (item['updated_at'], item['number']) > (project['latest']['updated_at'], project['latest']['number']):
             project['latest'] = item
 
+    for repository, contribution in (preserved or {}).items():
+        project = projects.setdefault(repository, {'merged': 0, 'open': 0, 'latest': contribution['latest']})
+        project['history_url'] = contribution['history_url']
+        if contribution['latest']['updated_at'] > project['latest']['updated_at']:
+            project['latest'] = contribution['latest']
+
     merged_total = sum(project['merged'] for project in projects.values())
     open_total = sum(project['open'] for project in projects.values())
     repository_label = 'repository' if len(projects) == 1 else 'repositories'
-    lines = [f'**{merged_total} merged · {open_total} open · {len(projects)} {repository_label}**', '',
-             '| Project | Merged PRs | Open PRs | Latest contribution |',
+    lines = [f'**{merged_total} merged PRs · {open_total} open PRs · {len(projects)} {repository_label}**', '',
+             '| Project | Upstream work | Open PRs | Latest contribution |',
              '| --- | ---: | ---: | --- |']
     ordered = sorted(projects.items(), key=lambda pair: (
-        pair[1]['merged'] > 0, pair[1]['latest']['updated_at'], pair[0]), reverse=True)
+        pair[0] in PRESERVED_PROJECTS, pair[1]['merged'] > 0,
+        pair[1]['latest']['updated_at'], pair[0]), reverse=True)
     for repository, project in ordered:
         name = PROJECT_NAMES.get(repository, repository.split('/')[1])
-        counts = [f'[{project[state]}]({pr_search(repository, login, state)})'
-                  if project[state] else '—' for state in ['merged', 'open']]
+        accepted = []
+        if project['merged']:
+            label = 'PR' if project['merged'] == 1 else 'PRs'
+            accepted.append(f'[{project["merged"]} {label}]({pr_search(repository, login, "merged")})')
+        if project.get('history_url'):
+            accepted.append(f'[Commit history]({project["history_url"]})')
+        completed = ' · '.join(accepted) or '—'
+        opened = f'[{project["open"]}]({pr_search(repository, login, "open")})' if project['open'] else '—'
         latest = project['latest']
         title = markdown_text(latest['title'], limit=68)
+        label = f'{title} · commit' if latest.get('kind') == 'commit' else f'#{latest["number"]} · {title}'
         draft = ' (draft)' if latest.get('draft') else ''
         lines.append(f'| [{markdown_text(name)}](https://github.com/{repository}) | '
-                     f'{counts[0]} | {counts[1]} | [#{latest["number"]} · {title}]({latest["html_url"]}){draft} |')
+                     f'{completed} | {opened} | [{label}]({latest["html_url"]}){draft} |')
     if not projects:
         lines = ['No public upstream pull requests yet.']
-    lines += ['', f'<sub>Public upstream pull requests · updated {checked_on} · refreshed twice daily</sub>']
+    lines += ['', f'<sub>Public upstream PRs and preserved commits · updated {checked_on} · refreshed twice daily</sub>']
     return '\n'.join(lines)
 
 
@@ -144,8 +195,9 @@ def main():
     original = args.readme.read_bytes().decode('utf-8')
     replace_section(original, '')  # Validate markers before accessing GitHub.
     items = fetch_pull_requests(args.login, args.gh)
+    preserved = fetch_preserved_contributions(args.login, args.gh)
     checked_on = datetime.now(timezone(timedelta(hours=8))).date().isoformat()
-    updated = replace_section(original, render_table(items, args.login, checked_on))
+    updated = replace_section(original, render_table(items, args.login, checked_on, preserved))
     if updated == original:
         print('Open-source work is current.')
         return 0

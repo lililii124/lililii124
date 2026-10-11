@@ -34,7 +34,7 @@ class UpdateTests(unittest.TestCase):
                  pull(4, repository='example/fork', state='closed', merged=True)]
         items[1]['draft'] = True
         text = updater.render_table(items, 'example', '2026-01-02')
-        self.assertIn('1 merged · 1 open · 1 repository', text)
+        self.assertIn('1 merged PRs · 1 open PRs · 1 repository', text)
         self.assertIn('(draft)', text)
         self.assertNotIn('pull/3', text)
         self.assertNotIn('example/fork', text)
@@ -42,7 +42,7 @@ class UpdateTests(unittest.TestCase):
     def test_new_project_appears_without_configuration(self):
         text = updater.render_table([pull(repository='another/new-project')], 'example', '2026-01-02')
         self.assertIn('[new-project](https://github.com/another/new-project)', text)
-        self.assertIn('0 merged · 1 open · 1 repository', text)
+        self.assertIn('0 merged PRs · 1 open PRs · 1 repository', text)
 
     def test_missing_merge_status_does_not_become_a_false_merged_count(self):
         item = pull(state='closed')
@@ -63,6 +63,55 @@ class UpdateTests(unittest.TestCase):
         item['html_url'] = 'https://another.example/steal'
         with self.assertRaises(ValueError):
             updater.render_table([item], 'example', '2026-01-02')
+
+    @patch('update_open_source.github_get')
+    def test_preserved_commits_appear_without_becoming_merged_prs(self, get):
+        repository = 'OpenCourant/OpenCourant'
+        url = f'https://github.com/{repository}/commit/' + 'a' * 40
+        get.side_effect = [
+            {'full_name': repository, 'private': False, 'default_branch': 'main'},
+            [{'sha': 'a' * 40, 'author': {'login': 'example'}, 'html_url': url,
+              'commit': {'message': 'Add RHT | <model>\n\nDetails',
+                         'committer': {'date': '2026-01-03T00:00:00Z'}}}],
+        ]
+        preserved = updater.fetch_preserved_contributions('example')
+        get.assert_called_with(f'repos/{repository}/commits', 'gh', author='example', per_page=1)
+        text = updater.render_table([], 'example', '2026-01-03', preserved)
+        self.assertIn('0 merged PRs · 0 open PRs · 1 repository', text)
+        self.assertIn('[OpenRadioss (OpenCourant)]', text)
+        self.assertIn('[Commit history]', text)
+        self.assertIn('Add RHT &#124; &lt;model&gt; · commit', text)
+        self.assertNotIn('Details', text)
+
+    def test_preserved_history_and_new_prs_share_one_project(self):
+        repository = 'OpenCourant/OpenCourant'
+        preserved = {repository: {
+            'history_url': f'https://github.com/{repository}/commits/main/?author=example',
+            'latest': {'kind': 'commit', 'title': 'Add RHT',
+                       'html_url': f'https://github.com/{repository}/commit/' + 'a' * 40,
+                       'updated_at': '2026-01-01T00:00:00Z'},
+        }}
+        items = [pull(1, repository.lower(), state='closed', merged=True), pull(2, repository)]
+        text = updater.render_table(items, 'example', '2026-01-02', preserved)
+        self.assertIn('1 merged PRs · 1 open PRs · 1 repository', text)
+        self.assertEqual(text.count('[OpenRadioss (OpenCourant)]'), 1)
+        self.assertIn('[1 PR]', text)
+        self.assertIn('[Commit history]', text)
+        self.assertIn('#2 · Add a model', text)
+
+    @patch('update_open_source.github_get')
+    def test_missing_or_unrelated_preserved_history_is_rejected(self, get):
+        repository = 'OpenCourant/OpenCourant'
+        metadata = {'full_name': repository, 'private': False, 'default_branch': 'main'}
+        get.side_effect = [metadata, []]
+        with self.assertRaises(RuntimeError):
+            updater.fetch_preserved_contributions('example')
+        get.side_effect = [dict(metadata, private=True)]
+        with self.assertRaises(ValueError):
+            updater.fetch_preserved_contributions('example')
+        get.side_effect = [metadata, [{'sha': 'a' * 40, 'author': {'login': 'someone-else'}}]]
+        with self.assertRaises(ValueError):
+            updater.fetch_preserved_contributions('example')
 
     def test_preserves_intro_and_contact_including_line_endings(self):
         original = 'intro 👋\r\n' + updater.START + '\r\nold\r\n' + updater.END + '\r\ncontact\r\n'
@@ -99,6 +148,18 @@ class UpdateTests(unittest.TestCase):
 
     @patch('update_open_source.fetch_pull_requests', side_effect=RuntimeError('API unavailable'))
     def test_api_failure_preserves_existing_readme(self, fetch):
+        with tempfile.TemporaryDirectory() as directory:
+            path = Path(directory) / 'README.md'
+            original = ('intro\n' + updater.START + '\nexisting data\n' + updater.END + '\ncontact').encode()
+            path.write_bytes(original)
+            with patch('sys.argv', ['update', '--login', 'example', '--readme', str(path)]):
+                with self.assertRaises(RuntimeError):
+                    updater.main()
+            self.assertEqual(path.read_bytes(), original)
+
+    @patch('update_open_source.fetch_pull_requests', return_value=[])
+    @patch('update_open_source.fetch_preserved_contributions', side_effect=RuntimeError('API unavailable'))
+    def test_preserved_history_failure_keeps_existing_readme(self, preserved, pulls):
         with tempfile.TemporaryDirectory() as directory:
             path = Path(directory) / 'README.md'
             original = ('intro\n' + updater.START + '\nexisting data\n' + updater.END + '\ncontact').encode()
