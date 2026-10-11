@@ -1,0 +1,46 @@
+name: Update open-source work
+
+on:
+  schedule:
+    - cron: '17 1,13 * * *'
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/open-source-work.yml'
+      - 'scripts/**'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: open-source-work
+  cancel-in-progress: false
+
+jobs:
+  update:
+    if: github.repository == 'lililii124/lililii124' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          ref: main
+      - name: Check updater
+        run: python3 -m unittest discover -s scripts -p 'test_*.py'
+      - name: Refresh public contributions
+        env:
+          GH_TOKEN: ${{ github.token }}
+          PROFILE_LOGIN: ${{ github.repository_owner }}
+        run: python3 scripts/update_open_source.py --login "$PROFILE_LOGIN"
+      - name: Save README
+        run: |
+          git add -- README.md
+          if git diff --cached --quiet; then
+            echo 'No README changes.'
+            exit 0
+          fi
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git commit -m 'Update open-source work'
+          git push origin HEAD:main
