@@ -63,7 +63,7 @@ I contribute to open-source scientific software for computational mechanics.
 | [PySPH](https://github.com/pypr/pysph) | — | [2](https://github.com/pypr/pysph/pulls?q=is%3Apr%20author%3Alililii124%20is%3Aopen) | [#439 · Fix CRKSPH OpenCL kernel compilation](https://github.com/pypr/pysph/pull/439) |
 | [SoliDualSPHysics](https://github.com/naqibr/SoliDualSPHysics) | — | [1](https://github.com/naqibr/SoliDualSPHysics/pulls?q=is%3Apr%20author%3Alililii124%20is%3Aopen) | [#2 · Add HJC concrete material](https://github.com/naqibr/SoliDualSPHysics/pull/2) |
 
-<sub>Public upstream PRs and preserved commits · updated 2026-10-12 · refreshed twice daily</sub>
+<sub>Public upstream PRs and preserved commits · updated 2026-10-13 · refreshed twice daily</sub>
 <!-- OPEN-SOURCE-WORK:END -->
 
 </details>
