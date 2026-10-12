@@ -1,23 +1,52 @@
-## Hi, I'm Yu Zheng 👋
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="assets/header-dark.svg" />
+  <source media="(prefers-color-scheme: light)" srcset="assets/header-light.svg" />
+  <img src="assets/header-light.svg" width="100%" alt="Yu Zheng — Computational mechanics. Impact dynamics, material models, and scientific software." />
+</picture>
+
+<br />
 
 I work on **computational mechanics**, with a focus on **impact dynamics, constitutive modeling, and material failure**. I'm also exploring **differentiable simulation** for material characterization and inverse problems.
 
 I contribute to open-source scientific software for computational mechanics.
 
-<div align="center">
-  <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="https://github-profile-summary-cards.vercel.app/api/cards/profile-details?username=lililii124&amp;theme=github_dark" />
-    <source media="(prefers-color-scheme: light)" srcset="https://github-profile-summary-cards.vercel.app/api/cards/profile-details?username=lililii124&amp;theme=github" />
-    <img height="155" src="https://github-profile-summary-cards.vercel.app/api/cards/profile-details?username=lililii124&amp;theme=github" alt="Yu Zheng's GitHub contribution activity" />
-  </picture>
-  <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="https://github-profile-summary-cards.vercel.app/api/cards/stats?username=lililii124&amp;theme=github_dark" />
-    <source media="(prefers-color-scheme: light)" srcset="https://github-profile-summary-cards.vercel.app/api/cards/stats?username=lililii124&amp;theme=github" />
-    <img height="155" src="https://github-profile-summary-cards.vercel.app/api/cards/stats?username=lililii124&amp;theme=github" alt="Yu Zheng's GitHub stats" />
-  </picture>
-</div>
+[Email](mailto:yuzheng@mail.ustc.edu.cn) &nbsp;·&nbsp; [Contributions](https://github.com/pulls?q=is%3Apr+author%3Alililii124+-user%3Alililii124) &nbsp;·&nbsp; [Repositories](https://github.com/lililii124?tab=repositories)
 
-### Open-source work
+## Selected open-source work
+
+<table>
+  <tr>
+    <td width="50%" valign="top">
+      <sub>IMPACT &amp; MATERIAL FAILURE</sub>
+      <h3><a href="https://github.com/OpenCourant/OpenCourant">OpenRadioss / OpenCourant</a></h3>
+      <p>Three-surface RHT solid material model and verification tools.</p>
+      <a href="https://github.com/OpenCourant/OpenCourant/commit/1a0d691b82bd4f94a3bc2399682551e84e1d5fa4">View contribution ↗</a>
+    </td>
+    <td width="50%" valign="top">
+      <sub>PARTICLE METHODS</sub>
+      <h3><a href="https://github.com/Xiangyu-Hu/SPHinXsys">SPHinXsys</a></h3>
+      <p>SYCL support for the HJC material model and a Taylor-bar impact example.</p>
+      <a href="https://github.com/Xiangyu-Hu/SPHinXsys/pull/1123">View pull request ↗</a>
+    </td>
+  </tr>
+  <tr>
+    <td width="50%" valign="top">
+      <sub>DIFFERENTIABLE SIMULATION</sub>
+      <h3><a href="https://github.com/deepmodeling/jax-fem">JAX-FEM</a></h3>
+      <p>Newton iteration limits and explicit nonconvergence reporting.</p>
+      <a href="https://github.com/deepmodeling/jax-fem/pull/96">View pull request ↗</a>
+    </td>
+    <td width="50%" valign="top">
+      <sub>SCIENTIFIC SOFTWARE</sub>
+      <h3><a href="https://github.com/OpenDiS/OpenDiS">OpenDiS</a></h3>
+      <p>ParaDiS extension installation validation and relative-path fixes.</p>
+      <a href="https://github.com/OpenDiS/OpenDiS/pull/44">View pull request ↗</a>
+    </td>
+  </tr>
+</table>
+
+<details>
+<summary><strong>All upstream contributions</strong> · automatically updated</summary>
 
 <!-- OPEN-SOURCE-WORK:START -->
 **3 merged PRs · 7 open PRs · 9 repositories**
@@ -36,5 +65,22 @@ I contribute to open-source scientific software for computational mechanics.
 
 <sub>Public upstream PRs and preserved commits · updated 2026-10-12 · refreshed twice daily</sub>
 <!-- OPEN-SOURCE-WORK:END -->
+
+</details>
+
+<details>
+<summary><strong>GitHub activity</strong></summary>
+
+<br />
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="https://github-profile-summary-cards.vercel.app/api/cards/profile-details?username=lililii124&amp;theme=github_dark" />
+  <source media="(prefers-color-scheme: light)" srcset="https://github-profile-summary-cards.vercel.app/api/cards/profile-details?username=lililii124&amp;theme=github" />
+  <img width="100%" src="https://github-profile-summary-cards.vercel.app/api/cards/profile-details?username=lililii124&amp;theme=github" alt="Yu Zheng's GitHub contribution activity" />
+</picture>
+
+</details>
+
+---
 
 I'm interested in discussing constitutive models, impact simulation, and open-source scientific software. Feel free to reach out at [yuzheng@mail.ustc.edu.cn](mailto:yuzheng@mail.ustc.edu.cn).
