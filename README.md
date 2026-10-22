@@ -16,6 +16,14 @@ I contribute to open-source scientific software for computational mechanics.
 
 <table>
   <tr>
+    <td colspan="2" valign="top">
+      <sub>MATERIAL POINT METHOD</sub>
+      <h3><a href="https://github.com/lililii124/jax-mpm">jax-mpm</a></h3>
+      <p>A 2D/3D JAX material point solver with constitutive models, two-body contact, fluid–solid examples, and ParaView output.</p>
+      <a href="https://github.com/lililii124/jax-mpm">View repository ↗</a>
+    </td>
+  </tr>
+  <tr>
     <td width="50%" valign="top">
       <sub>IMPACT &amp; MATERIAL FAILURE</sub>
       <h3><a href="https://github.com/OpenCourant/OpenCourant">OpenRadioss / OpenCourant</a></h3>
