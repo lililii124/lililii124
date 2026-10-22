@@ -57,12 +57,12 @@ I contribute to open-source scientific software for computational mechanics.
 <summary><strong>All upstream contributions</strong> · automatically updated</summary>
 
 <!-- OPEN-SOURCE-WORK:START -->
-**4 merged PRs · 6 open PRs · 9 repositories**
+**4 merged PRs · 7 open PRs · 9 repositories**
 
 | Project | Upstream work | Open PRs | Latest contribution |
 | --- | ---: | ---: | --- |
 | [OpenRadioss (OpenCourant)](https://github.com/OpenCourant/OpenCourant) | [Commit history](https://github.com/OpenCourant/OpenCourant/commits/main/?author=lililii124) | — | [Add three-surface RHT solid USER01 material and verification tools · commit](https://github.com/OpenCourant/OpenCourant/commit/1a0d691b82bd4f94a3bc2399682551e84e1d5fa4) |
-| [SPHinXsys](https://github.com/Xiangyu-Hu/SPHinXsys) | [2 PRs](https://github.com/Xiangyu-Hu/SPHinXsys/pulls?q=is%3Apr%20author%3Alililii124%20is%3Amerged) | — | [#1123 · Add SYCL support for HJC and a Taylor-bar impact example](https://github.com/Xiangyu-Hu/SPHinXsys/pull/1123) |
+| [SPHinXsys](https://github.com/Xiangyu-Hu/SPHinXsys) | [2 PRs](https://github.com/Xiangyu-Hu/SPHinXsys/pulls?q=is%3Apr%20author%3Alililii124%20is%3Amerged) | [1](https://github.com/Xiangyu-Hu/SPHinXsys/pulls?q=is%3Apr%20author%3Alililii124%20is%3Aopen) | [#1127 · Add Johnson–Cook material and CPU/SYCL necking examples](https://github.com/Xiangyu-Hu/SPHinXsys/pull/1127) |
 | [JAX-FEM](https://github.com/deepmodeling/jax-fem) | [1 PR](https://github.com/deepmodeling/jax-fem/pulls?q=is%3Apr%20author%3Alililii124%20is%3Amerged) | — | [#96 · Limit Newton iterations and report nonconvergence](https://github.com/deepmodeling/jax-fem/pull/96) |
 | [OpenDiS](https://github.com/OpenDiS/OpenDiS) | [1 PR](https://github.com/OpenDiS/OpenDiS/pulls?q=is%3Apr%20author%3Alililii124%20is%3Amerged) | — | [#44 · Fix ParaDiS extension installation validation and relative paths](https://github.com/OpenDiS/OpenDiS/pull/44) |
 | [SOFA](https://github.com/sofa-framework/sofa) | — | [1](https://github.com/sofa-framework/sofa/pulls?q=is%3Apr%20author%3Alililii124%20is%3Aopen) | [#6377 · \[HyperElastic\] Fix inverted Stable Neo-Hookean scene and add regres…](https://github.com/sofa-framework/sofa/pull/6377) |
@@ -71,7 +71,7 @@ I contribute to open-source scientific software for computational mechanics.
 | [PySPH](https://github.com/pypr/pysph) | — | [2](https://github.com/pypr/pysph/pulls?q=is%3Apr%20author%3Alililii124%20is%3Aopen) | [#439 · Fix CRKSPH OpenCL kernel compilation](https://github.com/pypr/pysph/pull/439) |
 | [SoliDualSPHysics](https://github.com/naqibr/SoliDualSPHysics) | — | [1](https://github.com/naqibr/SoliDualSPHysics/pulls?q=is%3Apr%20author%3Alililii124%20is%3Aopen) | [#2 · Add HJC concrete material](https://github.com/naqibr/SoliDualSPHysics/pull/2) |
 
-<sub>Public upstream PRs and preserved commits · updated 2026-10-22 · refreshed twice daily</sub>
+<sub>Public upstream PRs and preserved commits · updated 2026-10-23 · refreshed twice daily</sub>
 <!-- OPEN-SOURCE-WORK:END -->
 
 </details>
