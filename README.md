@@ -12,17 +12,35 @@ I contribute to open-source scientific software for computational mechanics.
 
 [Email](mailto:yuzheng@mail.ustc.edu.cn) &nbsp;·&nbsp; [Contributions](https://github.com/pulls?q=is%3Apr+author%3Alililii124+-user%3Alililii124) &nbsp;·&nbsp; [Repositories](https://github.com/lililii124?tab=repositories)
 
-## Selected open-source work
+## Featured projects
+
+### [jax-mpm](https://github.com/lililii124/jax-mpm)
+
+Material point mechanics in JAX: material failure, contact, and fluid–solid interaction.
+
+<table width="100%">
+<tr>
+<td width="33%" align="center" valign="top"><a href="https://github.com/lililii124/jax-mpm"><img src="https://raw.githubusercontent.com/lililii124/jax-mpm/main/docs/images/home/adhesion-visible--nonadhesive-pull-off.gif" width="100%" alt="Nonadhesive pull-off" /></a><br />Nonadhesive pull-off</td>
+<td width="33%" align="center" valign="top"><a href="https://github.com/lililii124/jax-mpm"><img src="https://raw.githubusercontent.com/lililii124/jax-mpm/main/docs/images/home/adhesion-visible--adhesive-pull-off.gif" width="100%" alt="Adhesive pull-off" /></a><br />Adhesive pull-off</td>
+<td width="33%" align="center" valign="top"><a href="https://github.com/lililii124/jax-mpm"><img src="https://raw.githubusercontent.com/lililii124/jax-mpm/main/docs/images/home/completed--radial-sinusoidal-pull-off.gif" width="100%" alt="Radial sinusoidal surface" /></a><br />Radial sinusoidal surface</td>
+</tr>
+</table>
+
+### [SoftGripLab](https://github.com/lililii124/SoftGripLab)
+
+Contact and material mechanics for robotic grasping, adhesion, and cutting.
+
+<table width="100%">
+<tr>
+<td width="33%" align="center" valign="top"><a href="https://github.com/lililii124/SoftGripLab"><img src="https://raw.githubusercontent.com/lililii124/SoftGripLab/main/docs/assets/04_robot.gif" width="100%" alt="Pick and place" /></a><br />Pick and place</td>
+<td width="33%" align="center" valign="top"><a href="https://github.com/lililii124/SoftGripLab"><img src="https://raw.githubusercontent.com/lililii124/SoftGripLab/main/docs/assets/05_adhesive_robot.gif" width="100%" alt="Adhesive transport" /></a><br />Adhesive transport</td>
+<td width="33%" align="center" valign="top"><a href="https://github.com/lililii124/SoftGripLab"><img src="https://raw.githubusercontent.com/lililii124/SoftGripLab/main/docs/assets/06_banana_cutting.gif" width="100%" alt="Continuous cutting" /></a><br />Continuous cutting</td>
+</tr>
+</table>
+
+## Selected contributions
 
 <table>
-  <tr>
-    <td colspan="2" valign="top">
-      <sub>MATERIAL POINT METHOD</sub>
-      <h3><a href="https://github.com/lililii124/jax-mpm">jax-mpm</a></h3>
-      <p>A 2D/3D JAX material point solver with constitutive models, two-body contact, fluid–solid examples, and ParaView output.</p>
-      <a href="https://github.com/lililii124/jax-mpm">View repository ↗</a>
-    </td>
-  </tr>
   <tr>
     <td width="50%" valign="top">
       <sub>IMPACT &amp; MATERIAL FAILURE</sub>
