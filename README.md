@@ -45,9 +45,9 @@ Hexahedral meshes for inclusions and voids, with geometry checks and finite-elem
 
 <table width="100%">
 <tr>
-<td width="33%" align="center" valign="top"><a href="https://github.com/lililii124/hexmicro/blob/main/examples/showcase/mixed_shapes_25d.json"><img src="assets/hexmicro/mixed_shapes_25d.png" width="100%" alt="Mixed shapes + voids / 2.5D" /></a></td>
+<td width="33%" align="center" valign="top"><a href="https://github.com/lililii124/hexmicro/blob/main/examples/showcase/mixed_polyhedra_3d.json"><img src="assets/hexmicro/mixed_polyhedra_3d.png" width="100%" alt="Convex polyhedra, curved particles and voids / 3D" /></a></td>
 <td width="33%" align="center" valign="top"><a href="https://github.com/lililii124/hexmicro/blob/main/examples/showcase/rotated_inclusions_3d.json"><img src="assets/hexmicro/rotated_inclusions_3d.png" width="100%" alt="11 rotated inclusions / 3D" /></a></td>
-<td width="33%" align="center" valign="top"><a href="https://github.com/lililii124/hexmicro/blob/main/examples/showcase/mixed_regions_3d.json"><img src="assets/hexmicro/mixed_regions_3d.png" width="100%" alt="7 inclusions + 4 voids / 3D" /></a></td>
+<td width="33%" align="center" valign="top"><a href="https://github.com/lililii124/hexmicro/blob/main/examples/showcase/voronoi_3d_split.json"><img src="assets/hexmicro/voronoi_3d_split.png" width="100%" alt="24 Voronoi grains / split interfaces" /></a></td>
 </tr>
 </table>
 <!-- HEXMICRO:END -->
