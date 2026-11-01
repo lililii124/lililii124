@@ -97,13 +97,13 @@ Hexahedral meshes for inclusions and voids, with geometry checks and finite-elem
 | [SPHinXsys](https://github.com/Xiangyu-Hu/SPHinXsys) | [3 PRs](https://github.com/Xiangyu-Hu/SPHinXsys/pulls?q=is%3Apr%20author%3Alililii124%20is%3Amerged) | — | [#1127 · Add Johnson–Cook material and CPU/SYCL necking examples](https://github.com/Xiangyu-Hu/SPHinXsys/pull/1127) |
 | [JAX-FEM](https://github.com/deepmodeling/jax-fem) | [1 PR](https://github.com/deepmodeling/jax-fem/pulls?q=is%3Apr%20author%3Alililii124%20is%3Amerged) | — | [#96 · Limit Newton iterations and report nonconvergence](https://github.com/deepmodeling/jax-fem/pull/96) |
 | [OpenDiS](https://github.com/OpenDiS/OpenDiS) | [1 PR](https://github.com/OpenDiS/OpenDiS/pulls?q=is%3Apr%20author%3Alililii124%20is%3Amerged) | — | [#44 · Fix ParaDiS extension installation validation and relative paths](https://github.com/OpenDiS/OpenDiS/pull/44) |
+| [Peridigm](https://github.com/peridigm/peridigm) | — | [1](https://github.com/peridigm/peridigm/pulls?q=is%3Apr%20author%3Alililii124%20is%3Aopen) | [#407 · Add HJC correspondence material](https://github.com/peridigm/peridigm/pull/407) |
 | [SOFA](https://github.com/sofa-framework/sofa) | — | [1](https://github.com/sofa-framework/sofa/pulls?q=is%3Apr%20author%3Alililii124%20is%3Aopen) | [#6377 · \[HyperElastic\] Fix inverted Stable Neo-Hookean scene and add regres…](https://github.com/sofa-framework/sofa/pull/6377) |
 | [Regression](https://github.com/sofa-framework/Regression) | — | [1](https://github.com/sofa-framework/Regression/pulls?q=is%3Apr%20author%3Alililii124%20is%3Aopen) | [#142 · Add reference states for the Stable Neo-Hookean inverted-tetrahedra…](https://github.com/sofa-framework/Regression/pull/142) |
-| [Peridigm](https://github.com/peridigm/peridigm) | — | [1](https://github.com/peridigm/peridigm/pulls?q=is%3Apr%20author%3Alililii124%20is%3Aopen) | [#407 · Add HJC correspondence material](https://github.com/peridigm/peridigm/pull/407) |
 | [PySPH](https://github.com/pypr/pysph) | — | [2](https://github.com/pypr/pysph/pulls?q=is%3Apr%20author%3Alililii124%20is%3Aopen) | [#439 · Fix CRKSPH OpenCL kernel compilation](https://github.com/pypr/pysph/pull/439) |
 | [SoliDualSPHysics](https://github.com/naqibr/SoliDualSPHysics) | — | [1](https://github.com/naqibr/SoliDualSPHysics/pulls?q=is%3Apr%20author%3Alililii124%20is%3Aopen) | [#2 · Add HJC concrete material](https://github.com/naqibr/SoliDualSPHysics/pull/2) |
 
-<sub>Public upstream PRs and preserved commits · updated 2026-11-01 · refreshed twice daily</sub>
+<sub>Public upstream PRs and preserved commits · updated 2026-11-02 · refreshed twice daily</sub>
 <!-- OPEN-SOURCE-WORK:END -->
 
 </details>
