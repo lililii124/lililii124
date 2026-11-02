@@ -14,6 +14,20 @@ I contribute to open-source scientific software for computational mechanics.
 
 ## Featured projects
 
+<!-- MESHPILOT:START -->
+### [MeshPilot](https://github.com/lililii124/MeshPilot)
+
+Text2Mesh — build finite-element meshes through conversation.
+
+<table width="100%">
+<tr>
+<td width="33%" align="center" valign="top"><a href="https://github.com/lililii124/MeshPilot"><img src="https://raw.githubusercontent.com/lililii124/MeshPilot/main/meshes/user-cylinder-transition.gif" width="100%" alt="Cylinder fine-to-coarse-to-fine mesh" /></a></td>
+<td width="33%" align="center" valign="top"><a href="https://github.com/lililii124/MeshPilot"><img src="https://raw.githubusercontent.com/lililii124/MeshPilot/main/meshes/user-cell-walls.gif" width="100%" alt="Voronoi solid cell mesh" /></a></td>
+<td width="33%" align="center" valign="top"><a href="https://github.com/lililii124/MeshPilot"><img src="https://raw.githubusercontent.com/lililii124/MeshPilot/main/meshes/user-mobius.gif" width="100%" alt="Mobius strip mesh" /></a></td>
+</tr>
+</table>
+<!-- MESHPILOT:END -->
+
 ### [jax-mpm](https://github.com/lililii124/jax-mpm)
 
 Material point mechanics in JAX: material failure, contact, and fluid–solid interaction.
@@ -124,3 +138,4 @@ Hexahedral meshes for inclusions and voids, with geometry checks and finite-elem
 ---
 
 I'm interested in discussing constitutive models, impact simulation, and open-source scientific software. Feel free to reach out at [yuzheng@mail.ustc.edu.cn](mailto:yuzheng@mail.ustc.edu.cn).
+
