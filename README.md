@@ -103,11 +103,11 @@ Hexahedral meshes for inclusions and voids, with geometry checks and finite-elem
 <summary><strong>All upstream contributions</strong> · automatically updated</summary>
 
 <!-- OPEN-SOURCE-WORK:START -->
-**5 merged PRs · 6 open PRs · 9 repositories**
+**5 merged PRs · 7 open PRs · 9 repositories**
 
 | Project | Upstream work | Open PRs | Latest contribution |
 | --- | ---: | ---: | --- |
-| [OpenRadioss (OpenCourant)](https://github.com/OpenCourant/OpenCourant) | [Commit history](https://github.com/OpenCourant/OpenCourant/commits/main/?author=lililii124) | — | [Add three-surface RHT solid USER01 material and verification tools · commit](https://github.com/OpenCourant/OpenCourant/commit/1a0d691b82bd4f94a3bc2399682551e84e1d5fa4) |
+| [OpenRadioss (OpenCourant)](https://github.com/OpenCourant/OpenCourant) | [Commit history](https://github.com/OpenCourant/OpenCourant/commits/main/?author=lililii124) | [1](https://github.com/OpenCourant/OpenCourant/pulls?q=is%3Apr%20author%3Alililii124%20is%3Aopen) | [#76 · Fix JWL unreacted bulk modulus pressure units](https://github.com/OpenCourant/OpenCourant/pull/76) |
 | [SPHinXsys](https://github.com/Xiangyu-Hu/SPHinXsys) | [3 PRs](https://github.com/Xiangyu-Hu/SPHinXsys/pulls?q=is%3Apr%20author%3Alililii124%20is%3Amerged) | — | [#1127 · Add Johnson–Cook material and CPU/SYCL necking examples](https://github.com/Xiangyu-Hu/SPHinXsys/pull/1127) |
 | [JAX-FEM](https://github.com/deepmodeling/jax-fem) | [1 PR](https://github.com/deepmodeling/jax-fem/pulls?q=is%3Apr%20author%3Alililii124%20is%3Amerged) | — | [#96 · Limit Newton iterations and report nonconvergence](https://github.com/deepmodeling/jax-fem/pull/96) |
 | [OpenDiS](https://github.com/OpenDiS/OpenDiS) | [1 PR](https://github.com/OpenDiS/OpenDiS/pulls?q=is%3Apr%20author%3Alililii124%20is%3Amerged) | — | [#44 · Fix ParaDiS extension installation validation and relative paths](https://github.com/OpenDiS/OpenDiS/pull/44) |
