@@ -12,6 +12,14 @@ I contribute to open-source scientific software for computational mechanics.
 
 [Email](mailto:yuzheng@mail.ustc.edu.cn) &nbsp;·&nbsp; [Contributions](https://github.com/pulls?q=is%3Apr+author%3Alililii124+-user%3Alililii124) &nbsp;·&nbsp; [Repositories](https://github.com/lililii124?tab=repositories)
 
+<p>
+  <strong>💬 <a href="https://github.com/lililii124/lililii124/issues/2">Leave a message</a></strong>
+  &nbsp;·&nbsp;
+  <strong>🔔 <a href="https://github.com/lililii124/lililii124/issues/3">Subscribe to announcements</a></strong>
+</p>
+
+<sub>Messages are public and require a GitHub account. For announcement notifications, open the thread and click <strong>Subscribe</strong>; delivery follows your GitHub notification settings.</sub>
+
 ## Featured projects
 
 <!-- MESHPILOT:START -->
